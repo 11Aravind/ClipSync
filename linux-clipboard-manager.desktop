@@ -1,12 +1,27 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Linux Clipboard Manager
-Comment=A comprehensive clipboard manager for Linux with Windows-like functionality
-Exec=/usr/bin/linux-clipboard-manager
-Icon=/usr/share/icons/linux-clipboard-manager.png
+Name=ClipSync
+GenericName=Clipboard Manager
+Comment=ClipSync - A comprehensive clipboard manager for Linux with Windows-like functionality
+Exec=/usr/bin/clipsync
+Icon=clipsync
 Terminal=false
-Categories=Utility;Office;
-Keywords=clipboard;manager;copy;paste;history;
+Categories=Utility;Office;System;
+Keywords=clipboard;manager;copy;paste;history;utility;
 StartupNotify=true
-StartupWMClass=Linux Clipboard Manager 
+StartupWMClass=ClipSync
+MimeType=text/plain;
+Actions=Show;Clear;Quit;
+
+[Desktop Action Show]
+Name=Show Clipboard History
+Exec=/usr/bin/linux-clipboard-manager --show
+
+[Desktop Action Clear]
+Name=Clear History
+Exec=/usr/bin/linux-clipboard-manager --clear
+
+[Desktop Action Quit]
+Name=Quit
+Exec=/usr/bin/linux-clipboard-manager --quit 

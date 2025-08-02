@@ -1,97 +1,128 @@
-# Linux Clipboard Manager
+# ClipSync
 
-A comprehensive clipboard manager for Linux that replicates the full functionality of Windows' clipboard history. Built with Electron, it provides a seamless clipboard experience on Linux with support for storing clipboard history, managing copied content, and accessing it with keyboard shortcuts.
+ClipSync is a comprehensive clipboard manager for Linux that replicates the full functionality of Windows' clipboard history. Built with Electron, it provides a seamless clipboard experience on Linux with support for storing clipboard history, managing copied content, and accessing it with keyboard shortcuts.
 
-## Features
+## ✨ Features
 
-- **Clipboard History**: Automatically stores up to 50 clipboard items
-- **Global Shortcuts**: 
-  - `Super+V` (Windows key + V) to open clipboard history
-  - `Super+Shift+V` for quick paste of the most recent item
-- **Search Functionality**: Search through your clipboard history
-- **Keyboard Navigation**: Use arrow keys to navigate and Enter to paste
-- **System Tray**: Always accessible from the system tray
-- **Persistent Storage**: Your clipboard history is saved between sessions
-- **Modern UI**: Clean, modern interface with dark mode support
-- **Auto-hide**: Window automatically hides when it loses focus
+- **📋 Clipboard History**: Automatically stores up to 50 clipboard items
+- **⌨️ Global Shortcuts**: 
+  - `Ctrl+Shift+V` to open clipboard history
+  - Auto-paste functionality into active input fields
+- **🔍 Search Functionality**: Search through your clipboard history
+- **🎯 Keyboard Navigation**: Use arrow keys to navigate and Enter to paste
+- **🖱️ System Tray**: Always accessible from the system tray
+- **💾 Persistent Storage**: Your clipboard history is saved between sessions
+- **🎨 Modern UI**: Clean, modern interface with dark mode support
+- **⚡ Auto-hide**: Window automatically hides when it loses focus
+- **🔒 Privacy-focused**: No internet required, all data stored locally
 
-## Installation
+## 🚀 Installation
 
-### Prerequisites
+### **Quick Install (Recommended)**
 
-- Node.js (version 16 or higher)
-- npm or yarn
-- Linux distribution with desktop environment
+#### **Option 1: System Installation**
+```bash
+# Download and install ClipSync
+git clone <repository-url>
+cd CopyPast
+sudo ./install-system.sh
+```
 
-### Installation Steps
+#### **Option 2: AppImage (Portable)**
+```bash
+# Build AppImage
+./build-appimage.sh
 
-1. **Clone or download the project**
-   ```bash
-   git clone <repository-url>
-   cd linux-clipboard-manager
-   ```
+# Run AppImage
+chmod +x dist/ClipSync-*.AppImage
+./dist/ClipSync-*.AppImage
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+#### **Option 3: Development Mode**
+```bash
+# Clone repository
+git clone <repository-url>
+cd CopyPast
 
-3. **Install system dependencies** (required for global shortcuts)
-   ```bash
-   # Ubuntu/Debian
-   sudo apt-get install libxtst-dev libpng++-dev
-   
-   # Fedora
-   sudo dnf install libXtst-devel libpng-devel
-   
-   # Arch Linux
-   sudo pacman -S libxtst libpng
-   ```
+# Install dependencies
+npm install
 
-4. **Start the application**
-   ```bash
-   npm start
-   ```
+# Start in development mode
+npm start
+```
 
-## Usage
+### **Prerequisites**
 
-### Basic Usage
+- **Node.js** (version 16 or higher)
+- **npm** or **yarn**
+- **Linux distribution** with desktop environment
+- **System dependencies** for global shortcuts
 
-1. **Launch the application**: Run `npm start` or double-click the executable
+### **System Dependencies**
+
+Install required packages for global shortcuts:
+
+```bash
+# Ubuntu/Debian
+sudo apt-get install libxtst-dev libpng++-dev
+
+# Fedora
+sudo dnf install libXtst-devel libpng-devel
+
+# Arch Linux
+sudo pacman -S libxtst libpng
+
+# openSUSE
+sudo zypper install libXtst-devel libpng-devel
+```
+
+## 📖 Usage
+
+### **Basic Usage**
+
+1. **Launch ClipSync**: 
+   - Press `Ctrl+Shift+V` anywhere, OR
+   - Search for "ClipSync" in Applications menu, OR
+   - Click the ClipSync icon in system tray
+
 2. **Copy items**: Copy text from any application (Ctrl+C)
-3. **Access history**: Press `Super+V` (Windows key + V) to open clipboard history
+
+3. **Access history**: Press `Ctrl+Shift+V` to open clipboard history
+
 4. **Paste items**: Click on any item in the history to paste it
-5. **Quick paste**: Press `Super+Shift+V` to quickly paste the most recent item
 
-### Advanced Features
+5. **Auto-paste**: Items automatically paste into active input fields
 
-- **Search**: Type in the search box to filter clipboard items
-- **Keyboard Navigation**: 
+### **Advanced Features**
+
+- **🔍 Search**: Type in the search box to filter clipboard items
+- **⌨️ Keyboard Navigation**: 
   - Use arrow keys to navigate through items
   - Press Enter to paste the selected item
   - Press Delete to remove the selected item
   - Press Escape to clear selection
-- **Double-click**: Double-click an item to copy it to clipboard without pasting
-- **Delete items**: Click the trash icon next to any item to delete it
-- **Clear all**: Click the clear button in the header to remove all history
+- **🖱️ Double-click**: Double-click an item to copy it to clipboard without pasting
+- **🗑️ Delete items**: Click the trash icon next to any item to delete it
+- **🖱️ System Tray**: Right-click tray icon for menu options
 
-### System Tray
+### **System Tray**
 
 The application runs in the system tray and provides:
-- Quick access to clipboard history
-- Option to clear all history
-- Settings menu (coming soon)
-- Quit option
+- **Show Clipboard History** - Quick access
+- **Test Clipboard Monitoring** - Debug clipboard detection
+- **Clear History** - Remove all clipboard items
+- **Settings** - Configuration options (coming soon)
+- **Quit** - Exit application
 
-## Building
+## 🛠️ Building
 
-### Development Build
+### **Development Build**
 
 ```bash
 npm run dev
 ```
 
-### Production Build
+### **Production Build**
 
 ```bash
 npm run build
@@ -99,25 +130,28 @@ npm run build
 
 This will create an AppImage in the `dist` folder that can be distributed and installed on other Linux systems.
 
-## Configuration
+### **Build AppImage**
 
-### Customizing Shortcuts
+```bash
+./build-appimage.sh
+```
+
+Creates a portable AppImage that works on any Linux distribution.
+
+## ⚙️ Configuration
+
+### **Customizing Shortcuts**
 
 You can modify the keyboard shortcuts by editing `src/main.js`:
 
 ```javascript
-// Change the main shortcut (default: Super+V)
-globalShortcut.register('Super+V', () => {
+// Change the main shortcut (default: Ctrl+Shift+V)
+globalShortcut.register('Ctrl+Shift+V', () => {
   toggleWindow();
-});
-
-// Change the quick paste shortcut (default: Super+Shift+V)
-globalShortcut.register('Super+Shift+V', () => {
-  // Quick paste functionality
 });
 ```
 
-### Adjusting History Size
+### **Adjusting History Size**
 
 Modify the `MAX_HISTORY_SIZE` constant in `src/main.js`:
 
@@ -125,32 +159,50 @@ Modify the `MAX_HISTORY_SIZE` constant in `src/main.js`:
 const MAX_HISTORY_SIZE = 50; // Change this value
 ```
 
-## Troubleshooting
+### **System Integration**
 
-### Global Shortcuts Not Working
+After installation, ClipSync integrates with your system:
+- **Applications Menu**: Search for "ClipSync"
+- **Global Shortcut**: `Ctrl+Shift+V` works system-wide
+- **System Tray**: Always accessible icon
+- **Desktop Entry**: Professional installation
+
+## 🔧 Troubleshooting
+
+### **Global Shortcuts Not Working**
 
 1. **Check permissions**: Ensure the application has permission to register global shortcuts
 2. **Desktop environment**: Some desktop environments may block global shortcuts
 3. **Install dependencies**: Make sure all system dependencies are installed
+4. **Try alternative shortcuts**: Some shortcuts may conflict with system shortcuts
 
-### Application Not Starting
+### **Application Not Starting**
 
 1. **Check Node.js version**: Ensure you have Node.js 16 or higher
 2. **Install dependencies**: Run `npm install` again
 3. **Check system dependencies**: Install required system packages
+4. **Sandbox issues**: The app runs with `--no-sandbox` flag
 
-### Performance Issues
+### **Clipboard Items Not Showing**
+
+1. **Check clipboard monitoring**: Look for console logs about clipboard detection
+2. **Test clipboard**: Copy some text and check if it appears
+3. **Restart application**: Close and reopen the application
+4. **Check permissions**: Ensure clipboard access is allowed
+
+### **Performance Issues**
 
 1. **Reduce history size**: Lower the `MAX_HISTORY_SIZE` value
-2. **Clear history**: Use the clear all function to remove old items
+2. **Clear history**: Use the clear function to remove old items
 3. **Restart application**: Close and reopen the application
+4. **Check system resources**: Monitor memory and CPU usage
 
-## Development
+## 🛠️ Development
 
-### Project Structure
+### **Project Structure**
 
 ```
-linux-clipboard-manager/
+CopyPast/
 ├── src/
 │   ├── main.js              # Main Electron process
 │   └── renderer/
@@ -158,12 +210,14 @@ linux-clipboard-manager/
 │       ├── styles.css       # Styling
 │       └── renderer.js      # Renderer process logic
 ├── assets/
-│   └── icon.png            # Application icon
+│   └── icon.png            # Application icon (logo1.png)
 ├── package.json            # Dependencies and scripts
+├── install-system.sh       # System installation script
+├── build-appimage.sh       # AppImage build script
 └── README.md              # This file
 ```
 
-### Contributing
+### **Contributing**
 
 1. Fork the repository
 2. Create a feature branch
@@ -171,16 +225,45 @@ linux-clipboard-manager/
 4. Test thoroughly
 5. Submit a pull request
 
-## License
+### **Building for Distribution**
+
+```bash
+# Build AppImage
+./build-appimage.sh
+
+# Install system-wide
+sudo ./install-system.sh
+
+# Development mode
+npm start
+```
+
+## 📄 License
 
 MIT License - see LICENSE file for details.
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 - Built with [Electron](https://electronjs.org/)
-- Uses [robotjs](https://robotjs.io/) for system automation
+- Uses [electron-store](https://github.com/sindresorhus/electron-store) for persistent storage
 - Inspired by Windows 10 clipboard history feature
 
-## Support
+## 📞 Support
 
-If you encounter any issues or have feature requests, please open an issue on the project repository. 
+If you encounter any issues or have feature requests, please open an issue on the project repository.
+
+## 🚀 Quick Start
+
+```bash
+# Clone repository
+git clone <repository-url>
+cd CopyPast
+
+# Install system-wide
+sudo ./install-system.sh
+
+# Or run in development mode
+npm start
+```
+
+**ClipSync** - Your Windows-like clipboard experience on Linux! 🎉 

@@ -209,7 +209,7 @@ function createTray() {
   }
   
   tray = new Tray(icon);
-  tray.setToolTip('Linux Clipboard Manager');
+  tray.setToolTip('ClipSync');
   
   const contextMenu = Menu.buildFromTemplate([
     {

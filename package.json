@@ -1,7 +1,7 @@
 {
-  "name": "linux-clipboard-manager",
+  "name": "clipsync",
   "version": "1.0.0",
-  "description": "A comprehensive clipboard manager for Linux with Windows-like functionality",
+  "description": "ClipSync - A comprehensive clipboard manager for Linux with Windows-like functionality",
   "main": "src/main.js",
   "scripts": {
     "start": "electron . --no-sandbox",
@@ -26,8 +26,8 @@
     "electron-store": "^8.1.0"
   },
   "build": {
-    "appId": "com.clipboardmanager.app",
-    "productName": "Linux Clipboard Manager",
+    "appId": "com.clipsync.app",
+    "productName": "ClipSync",
     "directories": {
       "output": "dist"
     },

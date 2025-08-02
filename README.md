@@ -56,24 +56,24 @@ npm start
 - **Node.js** (version 16 or higher)
 - **npm** or **yarn**
 - **Linux distribution** with desktop environment
-- **System dependencies** for global shortcuts
+- **xdotool** for auto-paste functionality
 
 ### **System Dependencies**
 
-Install required packages for global shortcuts:
+Install required packages:
 
 ```bash
 # Ubuntu/Debian
-sudo apt-get install libxtst-dev libpng++-dev
+sudo apt-get install xdotool
 
 # Fedora
-sudo dnf install libXtst-devel libpng-devel
+sudo dnf install xdotool
 
 # Arch Linux
-sudo pacman -S libxtst libpng
+sudo pacman -S xdotool
 
 # openSUSE
-sudo zypper install libXtst-devel libpng-devel
+sudo zypper install xdotool
 ```
 
 ## 📖 Usage
@@ -110,8 +110,6 @@ sudo zypper install libXtst-devel libpng-devel
 The application runs in the system tray and provides:
 - **Show Clipboard History** - Quick access
 - **Test Clipboard Monitoring** - Debug clipboard detection
-- **Clear History** - Remove all clipboard items
-- **Settings** - Configuration options (coming soon)
 - **Quit** - Exit application
 
 ## 🛠️ Building
@@ -210,12 +208,22 @@ CopyPast/
 │       ├── styles.css       # Styling
 │       └── renderer.js      # Renderer process logic
 ├── assets/
-│   └── icon.png            # Application icon (logo1.png)
+│   ├── icon.png            # Main application icon
+│   └── icon-32.png         # System tray icon
 ├── package.json            # Dependencies and scripts
 ├── install-system.sh       # System installation script
+├── install-dependencies.sh # Dependency installation script
 ├── build-appimage.sh       # AppImage build script
+├── linux-clipboard-manager.desktop # Desktop entry
+├── DISTRIBUTION.md         # Distribution guide
 └── README.md              # This file
 ```
+
+### **Dependencies**
+
+- **electron**: Desktop application framework
+- **electron-builder**: Build and package the application
+- **electron-store**: Persistent storage for clipboard history
 
 ### **Contributing**
 

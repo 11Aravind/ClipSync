@@ -201,11 +201,18 @@ function createTray() {
   // Create a simple icon if the file doesn't exist
   let icon;
   try {
-    const iconPath = path.join(__dirname, '../assets/icon.png');
+    // Try smaller icon first for system tray
+    const iconPath = path.join(__dirname, '../assets/icon-32.png');
     icon = nativeImage.createFromPath(iconPath);
   } catch (error) {
-    // Create a default icon
-    icon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==');
+    try {
+      // Fallback to original icon
+      const iconPath = path.join(__dirname, '../assets/icon.png');
+      icon = nativeImage.createFromPath(iconPath);
+    } catch (error) {
+      // Create a default icon
+      icon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==');
+    }
   }
   
   tray = new Tray(icon);

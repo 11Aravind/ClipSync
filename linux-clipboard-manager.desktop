@@ -16,12 +16,12 @@ Actions=Show;Clear;Quit;
 
 [Desktop Action Show]
 Name=Show Clipboard History
-Exec=/usr/bin/linux-clipboard-manager --show
+Exec=/usr/bin/clipsync --show
 
 [Desktop Action Clear]
 Name=Clear History
-Exec=/usr/bin/linux-clipboard-manager --clear
+Exec=/usr/bin/clipsync --clear
 
 [Desktop Action Quit]
 Name=Quit
-Exec=/usr/bin/linux-clipboard-manager --quit 
+Exec=/usr/bin/clipsync --quit 

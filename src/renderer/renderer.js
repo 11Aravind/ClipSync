@@ -16,8 +16,6 @@ class ClipboardManager {
         this.clipboardList = document.getElementById('clipboard-list');
         this.emptyState = document.getElementById('empty-state');
         this.searchInput = document.getElementById('search-input');
-        this.clearAllBtn = document.getElementById('clear-all');
-        this.clearAllTextBtn = document.getElementById('clear-all-text');
     }
 
     bindEvents() {
@@ -27,15 +25,7 @@ class ClipboardManager {
             this.filterAndRender();
         });
 
-        // Clear all button
-        this.clearAllBtn.addEventListener('click', () => {
-            this.clearAllHistory();
-        });
 
-        // Clear all text button
-        this.clearAllTextBtn.addEventListener('click', () => {
-            this.clearAllHistory();
-        });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -163,34 +153,7 @@ class ClipboardManager {
         }
     }
 
-    async clearAllHistory() {
-        if (confirm('Are you sure you want to clear all clipboard history?')) {
-            try {
-                // Clear from main process
-                await ipcRenderer.invoke('clear-history');
-                
-                // Clear local state
-                this.clipboardHistory = [];
-                this.filteredHistory = [];
-                this.searchTerm = '';
-                this.searchInput.value = '';
-                
-                // Update UI
-                this.render();
-                
-                // Show success message
-                this.showToast('All clipboard history cleared');
-                
-                // Hide window after a short delay
-                setTimeout(() => {
-                    ipcRenderer.send('hide-window');
-                }, 1000);
-            } catch (error) {
-                console.error('Failed to clear history:', error);
-                this.showToast('Failed to clear history');
-            }
-        }
-    }
+
 
     copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
